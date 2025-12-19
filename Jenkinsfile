@@ -54,9 +54,9 @@ pipeline {
     }
 
     post {
-        always {
-            // cleanWs() // Cleans the workspace to save disk space on the agent
-        }
+        // always {
+        //     // cleanWs() // Cleans the workspace to save disk space on the agent
+        // }
         success {
             echo 'Pipeline completed successfully!'
         }

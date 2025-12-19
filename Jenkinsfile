@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Defines the Node version to use from your Jenkins Global Tool Configuration
-        NODE_JS = 'node-20' 
+        NODE_JS = 'node-25' 
     }
 
     stages {

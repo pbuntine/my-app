@@ -56,7 +56,7 @@ pipeline {
             steps {
                 // The 'credentialsId' matches the ID you set in Step 2
                 withAWS(credentials: 'aws-s3-global-credentials', region: 'eu-central-1') {
-                    sh "/usr/local/bin/aws s3 sync out www.philb.me --delete" 
+                    sh "/usr/local/bin/aws s3 sync ./out s3://www.philb.me --delete" 
                 }
             }
         }

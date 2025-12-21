@@ -48,7 +48,7 @@ pipeline {
         stage('test list out dir') {
             steps {
                 // Archives the production build folder (.next) and public assets
-                sh 'ls -Ra /out'
+                sh 'ls -Ra out'
             }
         }
 

@@ -48,7 +48,7 @@ pipeline {
         stage('Archive Artifacts') {
             steps {
                 // Archives the production build folder (.next) and public assets
-                archiveArtifacts artifacts: '.next/**, public/**, package.json, next.config.js', fingerprint: true
+                archiveArtifacts artifacts: '.next/**, public/**, package.json, next.config.js, out/**', fingerprint: true
             }
         }
 

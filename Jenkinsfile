@@ -45,13 +45,6 @@ pipeline {
             }
         }
 
-        stage('Archive Artifacts') {
-            steps {
-                // Archives the production build folder (.next) and public assets
-                archiveArtifacts artifacts: '.next/**, public/**, package.json, next.config.js, out/**', fingerprint: true
-            }
-        }
-
         stage('test list out dir') {
             steps {
                 // Archives the production build folder (.next) and public assets
@@ -59,6 +52,12 @@ pipeline {
             }
         }
 
+        stage('Archive Artifacts') {
+            steps {
+                // Archives the production build folder (.next) and public assets
+                archiveArtifacts artifacts: '.next/**, public/**, package.json, next.config.js, out/**', fingerprint: true
+            }
+        }
 
         stage('Run AWS CLI command') {
             steps {

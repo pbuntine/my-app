@@ -52,6 +52,15 @@ pipeline {
             }
         }
 
+        stage('Copy files to s3 using AWS CLI command') {
+            steps {
+                // The 'credentialsId' matches the ID you set in Step 2
+                withAWS(credentials: 'aws-s3-global-credentials', region: 'eu-central-1') {
+                    sh "aws s3 sync out www.philb.me --delete" 
+                }
+            }
+        }
+
         stage('Archive Artifacts') {
             steps {
                 // Archives the production build folder (.next) and public assets
@@ -59,14 +68,14 @@ pipeline {
             }
         }
 
-        stage('Run AWS CLI command') {
-            steps {
-                // The 'credentialsId' matches the ID you set in Step 2
-                withAWS(credentials: 'aws-s3-global-credentials', region: 'eu-central-1') {
-                    sh '/usr/local/bin/aws s3 ls' // Example: List S3 buckets using the credentials
-                }
-            }
-        }
+        // stage('Run AWS CLI command') {
+        //     steps {
+        //         // The 'credentialsId' matches the ID you set in Step 2
+        //         withAWS(credentials: 'aws-s3-global-credentials', region: 'eu-central-1') {
+        //             sh '/usr/local/bin/aws s3 ls' // Example: List S3 buckets using the credentials
+        //         }
+        //     }
+        // }
                
     }
 

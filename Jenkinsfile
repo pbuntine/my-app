@@ -52,6 +52,14 @@ pipeline {
             }
         }
 
+        stage('test list out dir') {
+            steps {
+                // Archives the production build folder (.next) and public assets
+                sh 'ls -Ra /out'
+            }
+        }
+
+
         stage('Run AWS CLI command') {
             steps {
                 // The 'credentialsId' matches the ID you set in Step 2

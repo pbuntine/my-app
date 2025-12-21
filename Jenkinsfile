@@ -51,6 +51,13 @@ pipeline {
                 archiveArtifacts artifacts: '.next/**, public/**, package.json, next.config.js', fingerprint: true
             }
         }
+
+        stage('Run AWS CLI command') {
+            steps {
+                // The 'credentialsId' matches the ID you set in Step 2
+                withAWS(credentials: 'jenkins-sa', region: 'eu-central-1') {
+                    sh 'aws s3 ls' // Example: List S3 buckets using the credentials
+               
     }
 
     post {
